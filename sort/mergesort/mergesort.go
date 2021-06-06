@@ -8,53 +8,55 @@ package mergesort
 	[]int	待排序数组
  *@return
 */
-func MergeSort(ia []int){
+func MergeSort(ia []int) {
+	if len(ia) < 2 {
+		return
+	}
 	mergeSortC(ia, 0, len(ia)-1)
 	return
 }
 
-func mergeSortC(ia []int, beg int, end int){
-	if beg >= end{
+func mergeSortC(ia []int, beg int, end int) {
+	if beg >= end {
 		return
 	}
 
-	middle := (beg+end)/2
+	middle := (beg + end) / 2
 	mergeSortC(ia, beg, middle)
 	mergeSortC(ia, middle+1, end)
 
-	merge(ia, beg,middle,end)
+	merge(ia, beg, middle, end)
 
 	return
 
 }
 
-func merge(ia []int, beg, middle, end int){
+func merge(ia []int, beg, middle, end int) {
 	tmp := make([]int, end-beg+1)
-	i:=beg
-	j:=middle+1
-	k:=0
-	for i<=middle && j <= end{
-		if ia[i] <= ia[j]{
+	i := beg
+	j := middle + 1
+	k := 0
+	for i <= middle && j <= end {
+		if ia[i] <= ia[j] {
 			tmp[k] = ia[i]
 			i++
-		}else{
+		} else {
 			tmp[k] = ia[j]
 			j++
 		}
 		k++
 	}
 
-	if i == middle+1{
+	if i == middle+1 {
 		copy(tmp[k:], ia[j:end+1])
-	}else{
+	} else {
 		copy(tmp[k:], ia[i:middle+1])
 	}
 
-	copy(ia[beg:end+1],tmp)
+	copy(ia[beg:end+1], tmp)
 
 	return
 }
-
 
 //func merge(ia1 []int, ia2 []int) []int{
 //

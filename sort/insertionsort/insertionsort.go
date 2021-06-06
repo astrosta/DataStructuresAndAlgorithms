@@ -8,19 +8,22 @@ package insertionsort
 	[]int	待排序数组
  *@return
 */
-func InsertionSort(ia []int){
+func InsertionSort(ia []int) {
+	if len(ia) <= 1 {
+		return
+	}
 
-	for i := 1; i< len(ia); i++{
+	for i := 1; i < len(ia); i++ {
 		value := ia[i]
-		j := i -1
-		for ; j >= 0; j--{
-			if value  < ia[j]{
+		j := i - 1
+		for ; j >= 0; j-- {
+			if value < ia[j] {
 				ia[j+1] = ia[j]
-			}else{
+			} else {
 				break
 			}
 		}
-		ia[j + 1] = value
+		ia[j+1] = value
 	}
 	return
 }

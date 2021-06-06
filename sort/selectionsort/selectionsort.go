@@ -9,6 +9,9 @@ package selectionsort
  *@return
 */
 func SelectionSort(ia []int) {
+	if len(ia) <= 1 {
+		return
+	}
 
 	for i := 0; i < len(ia); i++ {
 		smallest := i
