@@ -1,7 +1,9 @@
 package queue
 
 /*
-循环队列会损失一个数组空间
+为了判断循环队列为空还是已满，循环队列会损失一个数组空间
+若head == tail,循环队列为空
+若(tail+1)%capacity == head,循环队列已满
 */
 import "fmt"
 
